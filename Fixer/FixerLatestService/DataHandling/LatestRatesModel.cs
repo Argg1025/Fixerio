@@ -64,7 +64,7 @@ namespace Fixer.FixerLatestService.DataHandling
         public float EGP { get; set; }
         public float ERN { get; set; }
         public float ETB { get; set; }
-        public float EUR { get; set; }
+        public int EUR { get; set; }
         public float FJD { get; set; }
         public float FKP { get; set; }
         public float GBP { get; set; }

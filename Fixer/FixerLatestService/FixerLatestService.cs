@@ -30,17 +30,16 @@ namespace Fixer.FixerLatestServices
             return AllRates.Count;
         }
 
-        //public float CheckFloats(int expectedCount)
-        //{
-        //    float count = 0;
-        //    foreach (PropertyInfo propertyInfo in ratesObject.GetType().GetProperties())
-        //    {
-        //         count += propertyInfo.GetValue();
-        //    }
-        //    // if (count == expectedCount) return true;
-        //    //else return false;
-        //    return count;
-        //}
+        public bool CheckFloats()
+        {
+            foreach (PropertyInfo propertyInfo in ratesObject.GetType().GetRuntimeProperties())
+            {
+                if (propertyInfo.PropertyType != typeof(float)) return false;
+            }
+            return true;
+        }
+
+       
        
 
     }

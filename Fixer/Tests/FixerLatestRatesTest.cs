@@ -23,14 +23,13 @@ namespace Fixer.Tests
         [Test]
         public void AllRatesFloats()
         {
-            //Assert.AreEqual(1, fixerLatestRates.CheckFloats(167));
+            Assert.AreEqual(true, fixerLatestRates.CheckFloats());
         }
 
         [Test]
         public void BaseCheck()
         {
-            Assert.AreEqual("EUR", fixerLatestRates.LatestRatesJson["base"].ToString());
-            //Assert.AreEqual("1", fixerLatestRates.AllRates[fixerLatestRates.fixerLatestDTO.LatestRates._base]);
+            Assert.AreEqual("1", fixerLatestRates.LatestRatesJson["rates"][$"{fixerLatestRates.LatestRatesJson["base"]}"].ToString());
         }
 
         [Test]
@@ -44,11 +43,6 @@ namespace Fixer.Tests
         {
             Assert.LessOrEqual(DateTimeOffset.FromUnixTimeSeconds(fixerLatestRates.fixerLatestDTO.LatestRates.timestamp)
         .DateTime.ToLocalTime(), DateTime.Parse("03:14:07 19 January 2038"));
-        }
-
-        [Test]
-        public void CheckTimeStampIsInt()
-        {
             Assert.AreEqual(typeof(int), fixerLatestRates.fixerLatestDTO.LatestRates.timestamp.GetType());
         }
 
